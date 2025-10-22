@@ -26,5 +26,13 @@ public class CalculatorTest {
     }
 
     //TODO
-    //
+    // Should subtract tro numbers
+    // Should handle negative result in subtraction
+
+    @Test
+    void SubtractNumbers() {
+        Calculator calc = new Calculator();
+        int result = calc.subtract(3, 1);
+        assertEquals(-2, result);
+    }
 }
