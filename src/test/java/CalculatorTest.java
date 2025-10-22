@@ -35,4 +35,11 @@ public class CalculatorTest {
         int result = calc.subtract(3, 1);
         assertEquals(2, result);
     }
+
+    @Test
+    void NegativeAnswer() {
+        Calculator calc = new Calculator();
+        int result = calc.subtract(-2, -3);
+        assertEquals(-6, result);
+    }
 }
