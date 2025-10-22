@@ -46,6 +46,6 @@ public class CalculatorTest {
     void MultiplyNumbers() {
         Calculator calc = new Calculator();
         int result = calc.multiply(2, 3);
-        assertEquals(2, result);
+        assertEquals(6, result);
     }
 }
