@@ -40,12 +40,18 @@ public class CalculatorTest {
     }
 
     //TODO
-    // Should multiply two numbers
     // Should return zero when multiplying by zero
     @Test
     void MultiplyNumbers() {
         Calculator calc = new Calculator();
         int result = calc.multiply(2, 3);
         assertEquals(6, result);
+    }
+
+    @Test
+    void MultiplyZero() {
+        Calculator calc = new Calculator();
+        int result = calc.multiply(0, 2);
+        assertEquals(1, result);
     }
 }
