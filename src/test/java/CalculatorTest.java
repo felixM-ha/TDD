@@ -4,11 +4,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
-
-    //TODO
-    // Should add zero to a number
-    // Should add negative numbers
-
     @Test
     void AddNumbers() {
         Calculator calc = new Calculator();
@@ -27,6 +22,9 @@ public class CalculatorTest {
     void AddNegativeNumbers() {
         Calculator calc = new Calculator();
         int result = calc.add(-2, -3);
-        assertEquals(2, result);
+        assertEquals(-5, result);
     }
+
+    //TODO
+    //
 }
