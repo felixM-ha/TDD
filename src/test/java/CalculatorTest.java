@@ -39,7 +39,7 @@ public class CalculatorTest {
     @Test
     void NegativeAnswer() {
         Calculator calc = new Calculator();
-        int result = calc.subtract(-2, -3);
-        assertEquals(-6, result);
+        int result = calc.subtract(2, 3);
+        assertEquals(-1, result);
     }
 }
