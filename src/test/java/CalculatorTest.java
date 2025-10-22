@@ -52,6 +52,6 @@ public class CalculatorTest {
     void MultiplyZero() {
         Calculator calc = new Calculator();
         int result = calc.multiply(0, 2);
-        assertEquals(1, result);
+        assertEquals(0, result);
     }
 }
