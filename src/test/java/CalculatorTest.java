@@ -25,10 +25,6 @@ public class CalculatorTest {
         assertEquals(-5, result);
     }
 
-    //TODO
-    // Should subtract tro numbers
-    // Should handle negative result in subtraction
-
     @Test
     void SubtractNumbers() {
         Calculator calc = new Calculator();
@@ -41,5 +37,15 @@ public class CalculatorTest {
         Calculator calc = new Calculator();
         int result = calc.subtract(2, 3);
         assertEquals(-1, result);
+    }
+
+    //TODO
+    // Should multiply two numbers
+    // Should return zero when multiplying by zero
+    @Test
+    void MultiplyNumbers() {
+        Calculator calc = new Calculator();
+        int result = calc.multiply(2, 3);
+        assertEquals(2, result);
     }
 }
