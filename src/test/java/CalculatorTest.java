@@ -33,6 +33,6 @@ public class CalculatorTest {
     void SubtractNumbers() {
         Calculator calc = new Calculator();
         int result = calc.subtract(3, 1);
-        assertEquals(-2, result);
+        assertEquals(2, result);
     }
 }
