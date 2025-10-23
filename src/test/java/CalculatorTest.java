@@ -53,8 +53,6 @@ public class CalculatorTest {
         assertEquals(0, result);
     }
 
-    //TODO
-    // Should throw exception when dividing by zero
     @Test
     void shouldDivideTwoNumbers() {
         Calculator calc = new Calculator();
