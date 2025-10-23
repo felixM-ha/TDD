@@ -74,8 +74,6 @@ public class CalculatorTest {
         assertEquals(0.0, result);
     }
 
-    //TODO
-    // Should throw exception for negative square root
     @Test
     void shouldCalculatePowerofaNumber() {
         Calculator calc = new Calculator();
@@ -90,7 +88,19 @@ public class CalculatorTest {
         assertEquals(1, result);
     }
 
-    @
+    @Test
+    void shouldCalculateSquareRoot() {
+        Calculator calc = new Calculator();
+        double result = calc.squareRoot(2, 2);
+        assertEquals(2, result);
+    }
+
+    @Test
+    void shouldThrowExceptionForNegativeSquareRoot() {
+        Calculator calc = new Calculator();
+        double result = calc.squareRoot(-2, -2);
+        assertEquals(-1, result);
+    }
 
     //TODO
     // Should handle maximum integer values in addition

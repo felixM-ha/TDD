@@ -23,7 +23,15 @@ public class Calculator {
         return a / b;
     }
 
-    public double power(int a, int b) {
+    public double power(double a, double b) {
         return Math.pow(a, b);
+    }
+
+    public double squareRoot(double a, double b) {
+        if (a == 0)
+            throw new IllegalArgumentException("No negative numbers!!");
+        if (b == 0)
+            throw new IllegalArgumentException("No negative numbers!!");
+        return Math.sqrt(a * a);
     }
 }
