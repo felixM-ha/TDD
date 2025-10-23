@@ -7,49 +7,49 @@ public class CalculatorTest {
     @Test
     void AddNumbers() {
         Calculator calc = new Calculator();
-        int result = calc.add(2, 3);
+        double result = calc.add(2, 3);
         assertEquals(5, result);
     }
 
     @Test
     void AddZero() {
         Calculator calc = new Calculator();
-        int result = calc.add(0, 2);
+        double result = calc.add(0, 2);
         assertEquals(2, result);
     }
 
     @Test
     void AddNegativeNumbers() {
         Calculator calc = new Calculator();
-        int result = calc.add(-2, -3);
+        double result = calc.add(-2, -3);
         assertEquals(-5, result);
     }
 
     @Test
     void SubtractNumbers() {
         Calculator calc = new Calculator();
-        int result = calc.subtract(3, 1);
+        double result = calc.subtract(3, 1);
         assertEquals(2, result);
     }
 
     @Test
     void NegativeAnswer() {
         Calculator calc = new Calculator();
-        int result = calc.subtract(2, 3);
+        double result = calc.subtract(2, 3);
         assertEquals(-1, result);
     }
 
     @Test
     void MultiplyNumbers() {
         Calculator calc = new Calculator();
-        int result = calc.multiply(2, 3);
+        double result = calc.multiply(2, 3);
         assertEquals(6, result);
     }
 
     @Test
     void MultiplyZero() {
         Calculator calc = new Calculator();
-        int result = calc.multiply(0, 2);
+        double result = calc.multiply(0, 2);
         assertEquals(0, result);
     }
 
@@ -59,14 +59,14 @@ public class CalculatorTest {
     @Test
     void shouldDivideTwoNumbers() {
         Calculator calc = new Calculator();
-        int result = calc.divide(10, 5);
+        double result = calc.divide(10, 5);
         assertEquals(2, result);
     }
 
     @Test
     void ShouldHandleDecimalDivision() {
         Calculator calc = new Calculator();
-        int result = calc.divide(10.0, 2.0);
+        double result = calc.divide(10.0, 2.0);
         assertEquals(5.0, result);
     }
     //TODO
