@@ -108,4 +108,11 @@ public class CalculatorTest {
     // Should handle zero base with positive exponent
     // Should handle zero squared
 
+    @Test
+    void shouldHandleMaximumIntegerValuesInAddition() {
+        Calculator calc = new Calculator();
+        double result = calc.add(2, 3);
+        assertEquals(6, result);
+    }
+
 }
