@@ -39,8 +39,6 @@ public class CalculatorTest {
         assertEquals(-1, result);
     }
 
-    //TODO
-    // Should return zero when multiplying by zero
     @Test
     void MultiplyNumbers() {
         Calculator calc = new Calculator();
@@ -54,4 +52,22 @@ public class CalculatorTest {
         int result = calc.multiply(0, 2);
         assertEquals(0, result);
     }
+
+    //TODO
+    // Should divide two numbers
+    // Should handle decimal division
+    // Should throw exception when dividing by zero
+
+    @Test
+    void shouldDivideTwoNumbers() {
+        Calculator calc = new Calculator();
+        int result = calc.divide(10, 5);
+        assertEquals(3, result);
+    }
+    //TODO
+    // Should calculate power of a number
+    // Should handle power of a zero
+    // Should calculate square root
+    // Should throw exception for negative square root
+
 }
