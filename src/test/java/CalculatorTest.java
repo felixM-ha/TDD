@@ -62,7 +62,7 @@ public class CalculatorTest {
     void shouldDivideTwoNumbers() {
         Calculator calc = new Calculator();
         int result = calc.divide(10, 5);
-        assertEquals(3, result);
+        assertEquals(2, result);
     }
     //TODO
     // Should calculate power of a number
