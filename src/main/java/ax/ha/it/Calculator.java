@@ -15,6 +15,11 @@ public class Calculator {
     }
 
     public double divide(double a, double b) {
+        if (a == 0)
+            throw new IllegalArgumentException("No dividing with 0 (zero)!!");
+        if (b == 0)
+            throw new IllegalArgumentException("No dividing with 0 (zero)!!");
+
         return a / b;
     }
 }

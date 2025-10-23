@@ -54,7 +54,6 @@ public class CalculatorTest {
     }
 
     //TODO
-    // Should handle decimal division
     // Should throw exception when dividing by zero
     @Test
     void shouldDivideTwoNumbers() {
@@ -64,10 +63,17 @@ public class CalculatorTest {
     }
 
     @Test
-    void ShouldHandleDecimalDivision() {
+    void shouldHandleDecimalDivision() {
         Calculator calc = new Calculator();
         double result = calc.divide(10.0, 2.0);
         assertEquals(5.0, result);
+    }
+
+    @Test
+    void shouldThrowExceptionWhenDividingByZero() {
+        Calculator calc = new Calculator();
+        double result = calc.divide(10.0, 0.0);
+        assertEquals(0.0, result);
     }
     //TODO
     // Should calculate power of a number
