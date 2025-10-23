@@ -28,9 +28,9 @@ public class Calculator {
     }
 
     public double squareRoot(double a, double b) {
-        if (a == 0)
+        if (a <= 0)
             throw new IllegalArgumentException("No negative numbers!!");
-        if (b == 0)
+        if (b <= 0)
             throw new IllegalArgumentException("No negative numbers!!");
         return Math.sqrt(a * a);
     }
