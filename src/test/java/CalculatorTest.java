@@ -73,11 +73,28 @@ public class CalculatorTest {
         double result = calc.divide(10.0, 0.0);
         assertEquals(0.0, result);
     }
+
     //TODO
-    // Should calculate power of a number
-    // Should handle power of a zero
     // Should calculate square root
     // Should throw exception for negative square root
-    @
+    @Test
+    void shouldCalculatePowerofaNumber() {
+        Calculator calc = new Calculator();
+        double result = calc.power(2, 2);
+        assertEquals(4, result);
+    }
+
+    @Test
+    void shouldHandlePowerofaZero() {
+        Calculator calc = new Calculator();
+        double result = calc.power(2, 0);
+        assertEquals(1, result);
+    }
+
+    //TODO
+    // Should handle maximum integer values in addition
+    // Should handle negative exponents
+    // Should handle zero base with positive exponent
+    // Should handle zero squared
 
 }
