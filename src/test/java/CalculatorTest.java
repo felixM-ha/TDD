@@ -91,14 +91,14 @@ public class CalculatorTest {
     @Test
     void shouldCalculateSquareRoot() {
         Calculator calc = new Calculator();
-        double result = calc.squareRoot(2, 2);
-        assertEquals(2, result);
+        double result = calc.squareRoot(10);
+        assertEquals(3.1622776601683795, result);
     }
 
     @Test
     void shouldThrowExceptionForNegativeSquareRoot() {
         Calculator calc = new Calculator();
-        double result = calc.squareRoot(-2, -2);
+        double result = calc.squareRoot(-2);
         assertEquals(-1, result);
     }
 
