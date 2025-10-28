@@ -90,4 +90,15 @@ public class MoneyConverterTest {
 
         assertThat(total).isEqualByComparingTo(new BigDecimal("125.00"));
     }
+
+    @Test
+    void shouldHandleZeroTaxRate() {
+        MoneyConverter converter = new MoneyConverter();
+        BigDecimal amount = new BigDecimal("100.00");
+        BigDecimal taxRate = BigDecimal.ZERO;
+
+        BigDecimal total = converter.addTaxToAmount(amount, taxRate);
+
+        assertThat(total).isEqualByComparingTo(new BigDecimal("100.00"));
+    }
 }
