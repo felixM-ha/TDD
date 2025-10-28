@@ -101,4 +101,16 @@ public class MoneyConverterTest {
 
         assertThat(total).isEqualByComparingTo(new BigDecimal("100.00"));
     }
+
+    @Test
+    void shouldThrowExceptionForNegativeTaxRate() {
+        MoneyConverter converter = new MoneyConverter();
+
+        assertThatThrownBy(() ->
+                converter.calculateTax(new BigDecimal("100.00"), new BigDecimal("-0.25"))
+        )
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Tax rate must not be negative");
+    }
+
 }
