@@ -61,20 +61,22 @@ public class TimeConverterTest {
     @Nested
     class MinutesToHoursConversion {
 
-        
         @Test
         void shouldConvert60MinutesTo1Hour() {
-            assertThat(converter.minutesToHours(60.0)).isCloseTo(1.0, within(0.0001));
+            assertThat(converter.minutesToHours(60.0))
+                    .isCloseTo(1.0, within(0.0001));
         }
 
         @Test
         void shouldConvert120MinutesTo2Hours() {
-            assertThat(converter.minutesToHours(120.0)).isCloseTo(2.0, within(0.0001));
+            assertThat(converter.minutesToHours(120.0))
+                    .isCloseTo(2.0, within(0.0001));
         }
 
         @Test
         void shouldConvert90MinutesTo1Point5Hours() {
-            assertThat(converter.minutesToHours(90.0)).isCloseTo(1.5, within(0.0001));
+            assertThat(converter.minutesToHours(90.0))
+                    .isCloseTo(1.5, within(0.0001));
         }
     }
 

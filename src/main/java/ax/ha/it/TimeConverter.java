@@ -17,7 +17,12 @@ public class TimeConverter {
 
     public double minutesToSeconds(double minutes) {
         validateNonNegative(minutes, "Minutes");
-        return minutes * 60;
+        return Math.round(minutes * SECONDS_PER_MINUTE) * 1.0;
+    }
+
+    public double minutesToHours(double minutes) {
+        validateNonNegative(minutes, "Minutes");
+        return minutes / 60;
     }
 
 
