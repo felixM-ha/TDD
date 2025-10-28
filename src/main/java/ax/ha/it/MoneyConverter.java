@@ -37,4 +37,16 @@ public class MoneyConverter {
 
         return amount1.add(amount2).setScale(2, RoundingMode.HALF_UP);
     }
+
+    public BigDecimal calculateTax(BigDecimal amount, BigDecimal taxRate) {
+        if (amount == null || taxRate == null) {
+            throw new IllegalArgumentException("Amount and tax rate must not be null");
+        }
+        if (taxRate.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Tax rate must not be negative");
+        }
+
+        return amount.multiply(taxRate).setScale(2, RoundingMode.HALF_UP);
+    }
+
 }

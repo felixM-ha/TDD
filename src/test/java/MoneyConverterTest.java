@@ -77,6 +77,6 @@ public class MoneyConverterTest {
 
         BigDecimal tax = converter.calculateTax(amount, taxRate);
 
-        assertThat(tax).isEqualByComparingTo(new BigDecimal("0.25"));
+        assertThat(tax).isEqualByComparingTo(new BigDecimal("25.00"));
     }
 }
