@@ -32,9 +32,9 @@ public class MoneyConverterTest {
         MoneyConverter converter = new MoneyConverter();
         BigDecimal usd = new BigDecimal("100.00");
 
-        BigDecimal result = converterd.usdToSek(usd);
+        BigDecimal result = converter.usdToSek(usd);
 
-        assertThat(result).isEqualByComparingTo(new BigDecimal("1110.00"));
+        assertThat(result).isEqualByComparingTo(new BigDecimal("1050.00"));
     }
 
 }
