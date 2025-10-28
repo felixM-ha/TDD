@@ -25,5 +25,8 @@ public class TimeConverter {
         return minutes / 60;
     }
 
-
+    public double hoursToMinutes(double hours) {
+        validateNonNegative(hours, "Hours");
+        return Math.round(hours * SECONDS_PER_MINUTE) * 1.0;
+    }
 }
