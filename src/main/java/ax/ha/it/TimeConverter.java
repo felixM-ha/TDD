@@ -40,5 +40,14 @@ public class TimeConverter {
         return days / 24;
     }
 
+    public String formatAsHHMMSS(int totalSeconds) {
+        validateNonNegative(totalSeconds, "Total seconds");
+
+        int hours = totalSeconds / 3600;
+        int minutes = totalSeconds % 3600 / 60;
+        int seconds = totalSeconds % 60;
+
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    }
 
 }

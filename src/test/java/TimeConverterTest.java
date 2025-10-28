@@ -141,8 +141,7 @@ public class TimeConverterTest {
     // --- Time Formatting as HH:MM:SS ---
     @Nested
     class TimeFormatting {
-
-
+        
         @Test
         void shouldFormat3661SecondsAs010101() {
             assertThat(converter.formatAsHHMMSS(3661)).isEqualTo("01:01:01");
