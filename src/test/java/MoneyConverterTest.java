@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class MoneyConverterTest {
 
@@ -61,5 +62,21 @@ public class MoneyConverterTest {
         assertThat(result).isEqualByComparingTo(new BigDecimal("100.00"));
     }
 
+    @Test
+    void shouldThrowExceptionForNegativeAmount() {
+        assertThatThrownBy(() -> converter.addMoney(new BigDecimal("-10.00"), new BigDecimal("5.00")))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Amounts cannot be negative");
+    }
 
+    @Test
+    void shouldCalculate25PercentTax() {
+        MoneyConverter converter = new MoneyConverter();
+        BigDecimal amount = new BigDecimal("100.00");
+        BigDecimal taxRate = new BigDecimal("0.25");
+
+        BigDecimal tax = converter.calculateTax(amount, taxRate);
+
+        assertThat(tax).isEqualByComparingTo(new BigDecimal("0.25"));
+    }
 }
