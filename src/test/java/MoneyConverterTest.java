@@ -79,4 +79,15 @@ public class MoneyConverterTest {
 
         assertThat(tax).isEqualByComparingTo(new BigDecimal("25.00"));
     }
+
+    @Test
+    void shouldAddTaxToAmount() {
+        MoneyConverter converter = new MoneyConverter();
+        BigDecimal amount = new BigDecimal("100.00");
+        BigDecimal taxRate = new BigDecimal("0.25");
+
+        BigDecimal total = converter.addTaxAmount(amount, taxRate);
+
+        assertThat(total).isEqualByComparingTo(new BigDecimal("125.00"));
+    }
 }
