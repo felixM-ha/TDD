@@ -7,6 +7,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MoneyConverterTest {
 
+    private final MoneyConverter converter = new MoneyConverter();
+
     @Test
     void shouldConvertUsdToEur() {
         MoneyConverter converter = new MoneyConverter();

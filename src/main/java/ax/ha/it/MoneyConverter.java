@@ -26,4 +26,15 @@ public class MoneyConverter {
     public BigDecimal sekToUsd(BigDecimal sek) {
         return sek.multiply(SEK_TO_USD).setScale(2, RoundingMode.HALF_UP);
     }
+
+    public BigDecimal addMoney(BigDecimal amount1, BigDecimal amount2) {
+        if (amount1 == null || amount2 == null) {
+            throw new IllegalArgumentException("Amounts cannot be null");
+        }
+        if (amount1.compareTo(BigDecimal.ZERO) < 0 || amount2.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Amounts cannot be negative");
+        }
+
+        return amount1.add(amount2).setScale(2, RoundingMode.HALF_UP);
+    }
 }
