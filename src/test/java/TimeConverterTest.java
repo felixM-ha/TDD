@@ -127,6 +127,7 @@ public class TimeConverterTest {
     @Nested
     class DaysToHoursConversion {
 
+
         @Test
         void shouldConvert1DayTo24Hours() {
             assertThat(converter.daysToHours(1.0)).isCloseTo(24.0, within(0.0001));
