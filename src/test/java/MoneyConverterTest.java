@@ -46,4 +46,10 @@ public class MoneyConverterTest {
 
         assertThat(result).isEqualByComparingTo(new BigDecimal("100.00"));
     }
+
+    @Test
+    void shouldAddTwoPositiveAmounts() {
+        BigDecimal result = converter.addMoney(new BigDecimal("50.00"), new BigDecimal("25.50"));
+        assertThat(result).isEqualByComparingTo(new BigDecimal("75.50"));
+    }
 }
