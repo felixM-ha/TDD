@@ -40,9 +40,9 @@ public class MoneyConverterTest {
     @Test
     void shouldConvertSekToUsd() {
         MoneyConverter converter = new MoneyConverter();
-        BigDecimal usd = new BigDecimal("1050.00");
+        BigDecimal sek = new BigDecimal("1050.00");
 
-        BigDecimal result = converter.sekToUsd(Sek);
+        BigDecimal result = converter.sekToUsd(sek);
 
         assertThat(result).isEqualByComparingTo(new BigDecimal("100.00"));
     }

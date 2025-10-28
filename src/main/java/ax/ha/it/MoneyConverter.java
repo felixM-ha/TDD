@@ -9,7 +9,7 @@ public class MoneyConverter {
     private static final BigDecimal EUR_TO_USD = BigDecimal.ONE.divide(USD_TO_EUR, 6, RoundingMode.HALF_UP);
 
     private static final BigDecimal USD_TO_SEK = new BigDecimal("10.50");
-
+    private static final BigDecimal SEK_TO_USD = BigDecimal.ONE.divide(USD_TO_SEK, 6, RoundingMode.HALF_UP);
 
     public BigDecimal usdToEur(BigDecimal usd) {
         return usd.multiply(USD_TO_EUR).setScale(2, RoundingMode.HALF_UP);
@@ -23,4 +23,7 @@ public class MoneyConverter {
         return usd.multiply(USD_TO_SEK).setScale(2, RoundingMode.HALF_UP);
     }
 
+    public BigDecimal sekToUsd(BigDecimal sek) {
+        return sek.multiply(SEK_TO_USD).setScale(2, RoundingMode.HALF_UP);
+    }
 }
