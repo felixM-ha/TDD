@@ -97,7 +97,7 @@ public class MoneyConverterTest {
         BigDecimal amount = new BigDecimal("100.00");
         BigDecimal taxRate = BigDecimal.ZERO;
 
-        BigDecimal total = converter.addTaxToAmount(amount, taxRate);
+        BigDecimal total = converter.addTaxAmount(amount, taxRate);
 
         assertThat(total).isEqualByComparingTo(new BigDecimal("100.00"));
     }
