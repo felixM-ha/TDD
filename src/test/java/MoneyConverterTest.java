@@ -9,14 +9,21 @@ public class MoneyConverterTest {
 
     @Test
     void shouldConvertUsdToEur() {
-        // Arrange
         MoneyConverter converter = new MoneyConverter();
         BigDecimal usd = new BigDecimal("100.00");
 
-        // Act
         BigDecimal result = converter.usdToEur(usd);
 
-        // Assert
         assertThat(result).isEqualByComparingTo(new BigDecimal("92.00"));
     }
+
+    void shouldConvertEurToUsd() {
+        MoneyConverter converter = new MoneyConverter();
+        BigDecimal eur = new BigDecimal("92.00");
+
+        BigDecimal result = converter.eurToUsd(eur);
+
+        assertThat(result).isEqualByComparingTo(new BigDecimal("100.00"));
+    }
+
 }
