@@ -17,6 +17,7 @@ public class MoneyConverterTest {
         assertThat(result).isEqualByComparingTo(new BigDecimal("92.00"));
     }
 
+    @Test
     void shouldConvertEurToUsd() {
         MoneyConverter converter = new MoneyConverter();
         BigDecimal eur = new BigDecimal("92.00");
