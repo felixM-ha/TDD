@@ -61,6 +61,7 @@ public class TimeConverterTest {
     @Nested
     class MinutesToHoursConversion {
 
+        
         @Test
         void shouldConvert60MinutesTo1Hour() {
             assertThat(converter.minutesToHours(60.0)).isCloseTo(1.0, within(0.0001));
