@@ -37,7 +37,7 @@ public class TimeConverter {
 
     public double daysToHours(double days) {
         validateNonNegative(days, "Days");
-        return days / 24;
+        return days * 24;
     }
 
     public String formatAsHHMMSS(int totalSeconds) {
@@ -48,6 +48,26 @@ public class TimeConverter {
         int seconds = totalSeconds % 60;
 
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    }
+
+    public int parseHHMMSS(String time) {
+        if (time == null) throw new IllegalArgumentException("Time cannot be null");
+
+        String[] parts = time.split(":");
+        if (parts.length != 3) throw new IllegalArgumentException("Time format is incorrect");
+
+        try {
+            int hours = Integer.parseInt(parts[0]);
+            int minutes = Integer.parseInt(parts[1]);
+            int seconds = Integer.parseInt(parts[2]);
+
+            if (hours < 0 || minutes < 0 || seconds < 0)
+                throw new IllegalArgumentException("Time format is incorrect");
+
+            return hours * 3600 + minutes * 60 + seconds;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Time format is incorrect");
+        }
     }
 
 }
