@@ -166,7 +166,7 @@ public class TimeConverterTest {
     // --- Time Parsing from HH:MM:SS ---
     @Nested
     class TimeParsing {
-        
+
         @Test
         void shouldParse010101To3661Seconds() {
             assertThat(converter.parseHHMMSS("01:01:01")).isEqualTo(3661);
@@ -184,9 +184,9 @@ public class TimeConverterTest {
 
         @Test
         void shouldMaintainValueThroughRoundTrip() {
-            int seconds = 3661;
+            long seconds = 3661;
             String formatted = converter.formatAsHHMMSS(seconds);
-            int parsed = converter.parseHHMMSS(formatted);
+            long parsed = converter.parseHHMMSS(formatted);
             assertThat(parsed).isEqualTo(seconds);
         }
 
