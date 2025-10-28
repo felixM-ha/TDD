@@ -14,4 +14,11 @@ public class TimeConverter {
             throw new IllegalArgumentException(name + " cannot be negative");
         }
     }
+
+    public double minutesToSeconds(double minutes) {
+        validateNonNegative(minutes, "Minutes");
+        return minutes * 60;
+    }
+
+
 }
