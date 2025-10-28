@@ -29,4 +29,11 @@ public class TimeConverter {
         validateNonNegative(hours, "Hours");
         return Math.round(hours * SECONDS_PER_MINUTE) * 1.0;
     }
+
+    public double hoursToDays(double hours) {
+        validateNonNegative(hours, "Hours");
+        return hours / 24;
+    }
+
+
 }
