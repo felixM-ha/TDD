@@ -49,4 +49,17 @@ public class MoneyConverter {
         return amount.multiply(taxRate).setScale(2, RoundingMode.HALF_UP);
     }
 
+    public BigDecimal addTaxAmount(BigDecimal amount, BigDecimal taxRate) {
+        if (amount == null || taxRate == null) {
+            throw new IllegalArgumentException("Amount and tax rate must not be null");
+        }
+        if (taxRate.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Tax rate must not be negative");
+        }
+
+        BigDecimal tax = calculateTax(amount, taxRate);
+        return amount.add(tax).setScale(2, RoundingMode.HALF_UP);
+    }
+
+
 }
