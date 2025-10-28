@@ -37,4 +37,13 @@ public class MoneyConverterTest {
         assertThat(result).isEqualByComparingTo(new BigDecimal("1050.00"));
     }
 
+    @Test
+    void shouldConvertSekToUsd() {
+        MoneyConverter converter = new MoneyConverter();
+        BigDecimal usd = new BigDecimal("1050.00");
+
+        BigDecimal result = converter.sekToUsd(Sek);
+
+        assertThat(result).isEqualByComparingTo(new BigDecimal("100.00"));
+    }
 }
