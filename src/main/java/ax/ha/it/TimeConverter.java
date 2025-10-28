@@ -35,5 +35,10 @@ public class TimeConverter {
         return hours / 24;
     }
 
+    public double daysToHours(double days) {
+        validateNonNegative(days, "Days");
+        return days / 24;
+    }
+
 
 }
