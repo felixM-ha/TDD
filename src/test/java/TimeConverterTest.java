@@ -126,7 +126,7 @@ public class TimeConverterTest {
     // --- Days to Hours Conversion ---
     @Nested
     class DaysToHoursConversion {
-        
+
         @Test
         void shouldConvert1DayTo24Hours() {
             assertThat(converter.daysToHours(1.0)).isCloseTo(24.0, within(0.0001));
@@ -141,6 +141,7 @@ public class TimeConverterTest {
     // --- Time Formatting as HH:MM:SS ---
     @Nested
     class TimeFormatting {
+
 
         @Test
         void shouldFormat3661SecondsAs010101() {
