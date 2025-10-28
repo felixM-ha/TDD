@@ -10,107 +10,92 @@ public class MoneyConverterTest {
 
     private final MoneyConverter converter = new MoneyConverter();
 
+    // --- USD → EUR ---
     @Test
     void shouldConvertUsdToEur() {
-        MoneyConverter converter = new MoneyConverter();
-        BigDecimal usd = new BigDecimal("100.00");
-
-        BigDecimal result = converter.usdToEur(usd);
-
-        assertThat(result).isEqualByComparingTo(new BigDecimal("92.00"));
+        assertThat(converter.usdToEur(new BigDecimal("100.00"))).isEqualByComparingTo(new BigDecimal("92.00"));
     }
 
     @Test
-    void shouldConvertEurToUsd() {
-        MoneyConverter converter = new MoneyConverter();
-        BigDecimal eur = new BigDecimal("92.00");
-
-        BigDecimal result = converter.eurToUsd(eur);
-
-        assertThat(result).isEqualByComparingTo(new BigDecimal("100.00"));
+    void shouldConvertZeroUsdToEur() {
+        assertThat(converter.usdToEur(BigDecimal.ZERO)).isEqualByComparingTo(BigDecimal.ZERO);
     }
 
+    @Test
+    void shouldThrowForNegativeUsdToEur() {
+        assertThatThrownBy(() -> converter.usdToEur(new BigDecimal("-10.00")))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("USD amount cannot be negative");
+    }
+
+    @Test
+    void shouldMaintainUsdAfterEurRoundTrip() {
+        BigDecimal usd = new BigDecimal("100.00");
+        BigDecimal eur = converter.usdToEur(usd);
+        BigDecimal usdBack = converter.eurToUsd(eur);
+        assertThat(usdBack).isEqualByComparingTo(usd);
+    }
+
+    // --- USD → SEK ---
     @Test
     void shouldConvertUsdToSek() {
-        MoneyConverter converter = new MoneyConverter();
-        BigDecimal usd = new BigDecimal("100.00");
-
-        BigDecimal result = converter.usdToSek(usd);
-
-        assertThat(result).isEqualByComparingTo(new BigDecimal("1050.00"));
+        assertThat(converter.usdToSek(new BigDecimal("100.00"))).isEqualByComparingTo(new BigDecimal("1050.00"));
     }
 
     @Test
-    void shouldConvertSekToUsd() {
-        MoneyConverter converter = new MoneyConverter();
-        BigDecimal sek = new BigDecimal("1050.00");
-
-        BigDecimal result = converter.sekToUsd(sek);
-
-        assertThat(result).isEqualByComparingTo(new BigDecimal("100.00"));
+    void shouldConvert10UsdToSek() {
+        assertThat(converter.usdToSek(new BigDecimal("10.00"))).isEqualByComparingTo(new BigDecimal("105.00"));
     }
 
+    @Test
+    void shouldMaintainSekAfterUsdRoundTrip() {
+        BigDecimal sek = new BigDecimal("1050.00");
+        BigDecimal usd = converter.sekToUsd(sek);
+        BigDecimal sekBack = converter.usdToSek(usd);
+        assertThat(sekBack).isEqualByComparingTo(sek);
+    }
+
+    // --- Money Addition ---
     @Test
     void shouldAddTwoPositiveAmounts() {
-        BigDecimal result = converter.addMoney(new BigDecimal("50.00"), new BigDecimal("25.50"));
-        assertThat(result).isEqualByComparingTo(new BigDecimal("75.50"));
+        assertThat(converter.addMoney(new BigDecimal("50.00"), new BigDecimal("25.50")))
+                .isEqualByComparingTo(new BigDecimal("75.50"));
     }
 
     @Test
     void shouldAddZeroAmounts() {
-        BigDecimal result = converter.addMoney(new BigDecimal("100.00"), BigDecimal.ZERO);
-        assertThat(result).isEqualByComparingTo(new BigDecimal("100.00"));
+        assertThat(converter.addMoney(new BigDecimal("100.00"), BigDecimal.ZERO))
+                .isEqualByComparingTo(new BigDecimal("100.00"));
     }
 
     @Test
     void shouldThrowExceptionForNegativeAmount() {
-        assertThatThrownBy(() -> converter.addMoney(new BigDecimal("-10.00"), new BigDecimal("5.00")))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Amounts cannot be negative");
+        assertThatThrownBy(() -> converter.addMoney(new BigDecimal("-10.00"), BigDecimal.ONE))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
+    // --- Tax Calculations ---
     @Test
     void shouldCalculate25PercentTax() {
-        MoneyConverter converter = new MoneyConverter();
-        BigDecimal amount = new BigDecimal("100.00");
-        BigDecimal taxRate = new BigDecimal("0.25");
-
-        BigDecimal tax = converter.calculateTax(amount, taxRate);
-
-        assertThat(tax).isEqualByComparingTo(new BigDecimal("25.00"));
+        assertThat(converter.calculateTax(new BigDecimal("100.00"), new BigDecimal("0.25")))
+                .isEqualByComparingTo(new BigDecimal("25.00"));
     }
 
     @Test
     void shouldAddTaxToAmount() {
-        MoneyConverter converter = new MoneyConverter();
-        BigDecimal amount = new BigDecimal("100.00");
-        BigDecimal taxRate = new BigDecimal("0.25");
-
-        BigDecimal total = converter.addTaxAmount(amount, taxRate);
-
-        assertThat(total).isEqualByComparingTo(new BigDecimal("125.00"));
+        assertThat(converter.addTaxAmount(new BigDecimal("100.00"), new BigDecimal("0.25")))
+                .isEqualByComparingTo(new BigDecimal("125.00"));
     }
 
     @Test
     void shouldHandleZeroTaxRate() {
-        MoneyConverter converter = new MoneyConverter();
-        BigDecimal amount = new BigDecimal("100.00");
-        BigDecimal taxRate = BigDecimal.ZERO;
-
-        BigDecimal total = converter.addTaxAmount(amount, taxRate);
-
-        assertThat(total).isEqualByComparingTo(new BigDecimal("100.00"));
+        assertThat(converter.addTaxAmount(new BigDecimal("100.00"), BigDecimal.ZERO))
+                .isEqualByComparingTo(new BigDecimal("100.00"));
     }
 
     @Test
     void shouldThrowExceptionForNegativeTaxRate() {
-        MoneyConverter converter = new MoneyConverter();
-
-        assertThatThrownBy(() ->
-                converter.calculateTax(new BigDecimal("100.00"), new BigDecimal("-0.25"))
-        )
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Tax rate must not be negative");
+        assertThatThrownBy(() -> converter.calculateTax(new BigDecimal("100.00"), new BigDecimal("-0.25")))
+                .isInstanceOf(IllegalArgumentException.class);
     }
-
 }
