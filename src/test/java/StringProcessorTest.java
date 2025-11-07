@@ -79,7 +79,8 @@ class StringProcessorTest {
         @Test
         @DisplayName("should handle palindromes with spaces")
         void shouldHandlePalindromesWithSpaces() {
-
+            boolean result = processor.isPalindrome("nurses run");
+            assertTrue(result);
         }
 
         @Test
