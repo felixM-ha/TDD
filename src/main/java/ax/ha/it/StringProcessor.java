@@ -13,7 +13,7 @@ public class StringProcessor {
         if (input == null || input.isEmpty()) {
             return true;
         }
-        String lower = input.toLowerCase();
-        return lower.equals(new StringBuilder(lower).reverse().toString());
+        String cleaned = input.replaceAll("\\s+", "").toLowerCase();
+        return cleaned.equals(new StringBuilder(cleaned).reverse().toString());
     }
 }
