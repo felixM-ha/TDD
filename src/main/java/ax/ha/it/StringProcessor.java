@@ -14,6 +14,6 @@ public class StringProcessor {
             return true;
         }
         String cleaned = input.replaceAll("\\s+", "").toLowerCase();
-        return cleaned.equals(new StringBuilder(cleaned).reverse().toString());
+        return cleaned.contentEquals(new StringBuilder(cleaned).reverse());
     }
 }
