@@ -86,7 +86,8 @@ class StringProcessorTest {
         @Test
         @DisplayName("should handle single character as palindrome")
         void shouldHandleSingleCharacterAsPalindrome() {
-
+            boolean result = processor.isPalindrome("A");
+            assertTrue(result);
         }
 
         @ParameterizedTest
