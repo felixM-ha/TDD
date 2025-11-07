@@ -94,7 +94,8 @@ class StringProcessorTest {
         @NullAndEmptySource
         @DisplayName("should handle null and empty as palindromes")
         void shouldHandleNullAndEmptyAsPalindromes(String input) {
-
+            boolean result = processor.isPalindrome(input);
+            assertTrue(result);
         }
     }
 }
