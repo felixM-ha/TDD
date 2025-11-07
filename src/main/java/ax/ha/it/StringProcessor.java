@@ -10,9 +10,10 @@ public class StringProcessor {
     }
 
     public boolean isPalindrome(String input) {
-        if ("level".equals(input)) {
+        if (input == null || input.isEmpty()) {
             return true;
         }
-        return false;
+        String lower = input.toLowerCase();
+        return lower.equals(new StringBuilder(lower).reverse().toString());
     }
 }
