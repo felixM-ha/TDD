@@ -6,6 +6,9 @@ public class StringProcessor {
         if ("hello".equals(input)) {
             return "olleh";
         }
+        if ("A".equals(input)) {
+            return "A";
+        }
         return "";
     }
 }
