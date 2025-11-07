@@ -72,7 +72,8 @@ class StringProcessorTest {
         @Test
         @DisplayName("should handle case-insensitive palindromes")
         void shouldHandleCaseInsensitivePalindrome() {
-
+            boolean result = processor.isPalindrome("LeVeL");
+            assertTrue(result);
         }
 
         @Test
