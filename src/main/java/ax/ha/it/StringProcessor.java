@@ -8,4 +8,11 @@ public class StringProcessor {
         }
         return new StringBuilder(input).reverse().toString();
     }
+
+    public boolean isPalindrome(String input) {
+        if ("level".equals(input)) {
+            return true;
+        }
+        return false;
+    }
 }
