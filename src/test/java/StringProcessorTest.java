@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class StringProcessorTest {
 
@@ -48,6 +49,49 @@ class StringProcessorTest {
         void shouldPreserveSpacesInReversal() {
             String result = processor.reverse("Hello World");
             assertEquals("dlroW olleH", result);
+        }
+    }
+
+    @Nested
+    @DisplayName("Palindrome Detection Tests")
+    class PalindromeDetectionTests {
+
+        @Test
+        @DisplayName("should detect simple palindrome")
+        void shouldDetectSimplePalindrome() {
+            boolean result = processor.isPalindrome("level");
+            assertTrue(result);
+        }
+
+        @Test
+        @DisplayName("should detect non-palindrome")
+        void shouldDetectNonPalindrome() {
+
+        }
+
+        @Test
+        @DisplayName("should handle case-insensitive palindromes")
+        void shouldHandleCaseInsensitivePalindrome() {
+
+        }
+
+        @Test
+        @DisplayName("should handle palindromes with spaces")
+        void shouldHandlePalindromesWithSpaces() {
+
+        }
+
+        @Test
+        @DisplayName("should handle single character as palindrome")
+        void shouldHandleSingleCharacterAsPalindrome() {
+
+        }
+
+        @ParameterizedTest
+        @NullAndEmptySource
+        @DisplayName("should handle null and empty as palindromes")
+        void shouldHandleNullAndEmptyAsPalindromes(String input) {
+
         }
     }
 }
