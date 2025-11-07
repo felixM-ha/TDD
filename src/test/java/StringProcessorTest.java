@@ -47,7 +47,7 @@ class StringProcessorTest {
         @DisplayName("should preserve spaces in reversal")
         void shouldPreserveSpacesInReversal() {
             String result = processor.reverse("Hello World");
-            assertEquals("dleoW olleH", result);
+            assertEquals("dlroW olleH", result);
         }
     }
 }
