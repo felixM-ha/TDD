@@ -241,4 +241,11 @@ class StringProcessorTest {
         assertTrue(result);
     }
 
+    @Test
+    @DisplayName("should return false for non-existent substring")
+    void shouldReturnFalseForNonExistentSubstring() {
+        boolean result = processor.containsSubstring("Hello World", "Java");
+        assertFalse(result);
+    }
+
 }
