@@ -201,7 +201,7 @@ class StringProcessorTest {
         @DisplayName("should capitalize first letter of each word")
         void shouldCapitalizeFirstLetterOfEachWord() {
             String result = processor.capitalizeWords("hello world from tdd");
-            assertEquals("Hello World From TDD", result);
+            assertEquals("Hello World From Tdd", result);
         }
     }
 
