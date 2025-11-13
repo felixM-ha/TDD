@@ -299,6 +299,17 @@ class StringProcessorTest {
             assertTrue(result);
         }
 
+        @Test
+        @DisplayName("should reject invalid phone number formats")
+        void shouldRejectInvalidPhoneNumberFormats() {
+            assertFalse(processor.isValidUSPhoneNumber("123-456-7890"));
+            assertFalse(processor.isValidUSPhoneNumber("1234567890"));
+            assertFalse(processor.isValidUSPhoneNumber("(123)456-7890")); // saknar space
+            assertFalse(processor.isValidUSPhoneNumber("(12) 345-6789")); // för få siffror
+            assertFalse(processor.isValidUSPhoneNumber(null));
+            assertFalse(processor.isValidUSPhoneNumber(""));
+        }
+
     }
 
 }
