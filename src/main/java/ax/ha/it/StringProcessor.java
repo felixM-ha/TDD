@@ -47,8 +47,8 @@ public class StringProcessor {
         if (input == null || input.trim().isEmpty()) {
             return 0;
         }
-
-        return input.trim().split("\\s+").length;
+        String[] words = input.trim().split("\\s+");
+        return words.length;
     }
 
     public boolean isValidEmail(String input) {
