@@ -212,5 +212,12 @@ class StringProcessorTest {
         assertEquals("Hello", result);
     }
 
+    @Test
+    @DisplayName("should handle mixed case input in capitalization")
+    void shouldHandleMixedCaseInputInCapitalization() {
+        String result = processor.capitalizeWords("hElLo wORld fRoM tDd");
+        assertEquals("Hello World From Tdd", result);
+    }
+
 
 }
