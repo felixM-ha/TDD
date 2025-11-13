@@ -255,4 +255,11 @@ class StringProcessorTest {
         assertEquals("abc", result);
     }
 
+    @Test
+    @DisplayName("should handle string with no duplicates")
+    void shouldHandleStringWithNoDuplicates() {
+        String result = processor.removeDuplicateCharacters("abc");
+        assertEquals("abc", result);
+    }
+
 }
