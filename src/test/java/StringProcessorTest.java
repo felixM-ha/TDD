@@ -337,9 +337,7 @@ class StringProcessorTest {
         void shouldHandleVeryLongStringsInReversal() {
 
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < 100_000; i++) {
-                sb.append("a");
-            }
+            sb.append("a".repeat(100_000));
             String longString = sb.toString();
 
             String reversed = processor.reverse(longString);
@@ -374,12 +372,10 @@ class StringProcessorTest {
         @Test
         @DisplayName("Should handle very long palindrome check")
         void shouldHandleVeryLongPalindromeCheck() {
-            // Skapa en lång palindrom-sträng
+
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < 50_000; i++) {
-                sb.append("abc");
-            }
-            String longPalindrome = sb.toString() + sb.reverse().toString();
+            sb.append("abc".repeat(50_000));
+            String longPalindrome = sb + sb.reverse().toString();
 
             boolean result = processor.isPalindrome(longPalindrome);
 

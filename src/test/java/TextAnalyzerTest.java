@@ -75,5 +75,23 @@ class TextAnalyzerTest {
             SentimentResult result = analyzer.analyzeSentiment(text);
             assertEquals(expectedCategory, result.getSentimentCategory());
         }
+
+        @Test
+        @DisplayName("Should handle empty text in sentiment analysis")
+        void shouldHandleEmptyTextInSentimentAnalysis() {
+            // Test med tom sträng
+            SentimentResult resultEmpty = analyzer.analyzeSentiment("");
+            assertEquals(SentimentCategory.NEUTRAL, resultEmpty.getSentimentCategory());
+            assertEquals(0, resultEmpty.getPositiveWordCount());
+            assertEquals(0, resultEmpty.getNegativeWordCount());
+            assertEquals(0.0, resultEmpty.getSentimentScore());
+
+            // Test med null
+            SentimentResult resultNull = analyzer.analyzeSentiment(null);
+            assertEquals(SentimentCategory.NEUTRAL, resultNull.getSentimentCategory());
+            assertEquals(0, resultNull.getPositiveWordCount());
+            assertEquals(0, resultNull.getNegativeWordCount());
+            assertEquals(0.0, resultNull.getSentimentScore());
+        }
     }
 }
