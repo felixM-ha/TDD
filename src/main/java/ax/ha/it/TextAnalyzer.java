@@ -7,8 +7,8 @@ public class TextAnalyzer {
     private final Calculator calculator;
     private final StringProcessor processor;
 
-    private static final Set<String> POSITIVE_WORDS = Set.of("love", "fun", "easy", "good", "great");
-    private static final Set<String> NEGATIVE_WORDS = Set.of("hate", "hard", "difficult", "bad");
+    private static final Set<String> POSITIVE_WORDS = Set.of("good", "happy", "great", "excellent", "fantastic", "love", "fun", "easy");
+    private static final Set<String> NEGATIVE_WORDS = Set.of("bad", "sad", "terrible", "horrible", "awful", "hate", "hard", "difficult");
 
     public TextAnalyzer(Calculator calculator, StringProcessor processor) {
         this.calculator = calculator;
@@ -17,7 +17,7 @@ public class TextAnalyzer {
 
     public SentimentResult analyzeSentiment(String text) {
         if (text == null || text.isEmpty()) {
-            return new SentimentResult(0, SentimentCategory.NEUTRAL, 0, 0);
+            return new SentimentResult(0.0, SentimentCategory.NEUTRAL, 0, 0);
         }
 
         String[] words = text.toLowerCase().split("\\s+");
@@ -25,15 +25,28 @@ public class TextAnalyzer {
         int negativeCount = 0;
 
         for (String word : words) {
-            if (POSITIVE_WORDS.contains(word)) positiveCount++;
-            if (NEGATIVE_WORDS.contains(word)) negativeCount++;
+            for (String positive : POSITIVE_WORDS) {
+                if (word.startsWith(positive)) {
+                    positiveCount++;
+                    break;
+                }
+            }
+            for (String negative : NEGATIVE_WORDS) {
+                if (word.startsWith(negative)) {
+                    negativeCount++;
+                    break;
+                }
+            }
         }
 
         double score = positiveCount - negativeCount;
-        SentimentCategory category = score > 0 ? SentimentCategory.POSITIVE
-                : score < 0 ? SentimentCategory.NEGATIVE
-                : SentimentCategory.NEUTRAL;
+        SentimentCategory category;
+
+        if (score > 0) category = SentimentCategory.POSITIVE;
+        else if (score < 0) category = SentimentCategory.NEGATIVE;
+        else category = SentimentCategory.NEUTRAL;
 
         return new SentimentResult(score, category, positiveCount, negativeCount);
     }
+
 }
