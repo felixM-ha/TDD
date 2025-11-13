@@ -151,6 +151,13 @@ class StringProcessorTest {
             assertEquals(4, count);
         }
 
+        @Test
+        @DisplayName("should handle leading and trailing spaces")
+        void shouldHandleLeadingAndTrailingSpaces() {
+            int count = processor.countWords("   Hello world from TDD   ");
+            assertEquals(4, count);
+        }
+
     }
 
 
