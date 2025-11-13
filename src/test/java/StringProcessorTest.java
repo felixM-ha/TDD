@@ -164,6 +164,16 @@ class StringProcessorTest {
             int count = processor.countWords("Hello");
             assertEquals(1, count);
         }
+
+        @ParameterizedTest
+        @NullAndEmptySource
+        @DisplayName("should return zero for null, empty, or whitespace-only strings")
+        @ValueSource(strings = {"   ", "\t", "\n"})
+        void shouldReturnZeroForNullEmptyOrWhitespaceOnlyStrings(String input) {
+            int count = processor.countWords(input);
+            assertEquals(0, count);
+        }
+
     }
 
     @Nested
