@@ -131,8 +131,19 @@ class StringProcessorTest {
             String result = processor.compress(input);
             assertEquals("", result);
         }
-
-
     }
+
+    @Nested
+    @DisplayName("Word Count Tests")
+    class WordCountTests {
+
+        @Test
+        @DisplayName("should count words in simple sentence")
+        void shouldCountWordsInSimpleSentence() {
+            int count = processor.countWords("Hello world from TDD");
+            assertEquals(4, count);
+        }
+    }
+
 
 }
