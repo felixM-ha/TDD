@@ -103,4 +103,10 @@ public class StringProcessor {
         return input.matches("^\\(\\d{3}\\) \\d{3}-\\d{4}$");
     }
 
+    public boolean isValidURL(String input) {
+        if (input == null || input.isEmpty()) return false;
+
+        return input.matches("^(https?://)([\\w.-]+)(\\.[a-z]{2,})(/\\S*)?$");
+    }
+
 }
