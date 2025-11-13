@@ -191,9 +191,18 @@ class StringProcessorTest {
         void shouldRejectNullAndEmptyEmails(String input) {
             assertFalse(processor.isValidEmail(input));
         }
-
-
     }
 
+    @Nested
+    @DisplayName("String Manipulation Tests")
+    class StringManipulationTests {
+
+        @Test
+        @DisplayName("should capitalize first letter of each word")
+        void shouldCapitalizeFirstLetterOfEachWord() {
+            String result = processor.capitalizeWords("hello world from tdd");
+            assertEquals("Hello World From TDD", result);
+        }
+    }
 
 }
