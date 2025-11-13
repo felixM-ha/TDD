@@ -143,6 +143,14 @@ class StringProcessorTest {
             int count = processor.countWords("Hello world from TDD");
             assertEquals(4, count);
         }
+
+        @Test
+        @DisplayName("should handle multiple spaces between words")
+        void shouldHandleMultipleSpacesBetweenWords() {
+            int count = processor.countWords("Hello   world    from   TDD");
+            assertEquals(4, count);
+        }
+
     }
 
 
