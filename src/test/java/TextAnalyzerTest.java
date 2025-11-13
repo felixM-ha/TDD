@@ -47,5 +47,18 @@ class TextAnalyzerTest {
             assertEquals(0, result.getPositiveWordCount());
             assertEquals(3, result.getNegativeWordCount());
         }
+
+        @Test
+        @DisplayName("Should analyze neutral sentiment correctly")
+        void shouldAnalyzeNeutralSentimentCorrectly() {
+            String text = "This task is neither easy nor difficult";
+            SentimentResult result = analyzer.analyzeSentiment(text);
+
+            assertEquals(SentimentCategory.NEUTRAL, result.getSentimentCategory());
+            assertEquals(0, result.getPositiveWordCount());
+            assertEquals(0, result.getNegativeWordCount());
+            assertEquals(0.0, result.getSentimentScore());
+        }
+
     }
 }
