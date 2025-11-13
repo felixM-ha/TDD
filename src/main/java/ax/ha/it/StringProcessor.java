@@ -18,9 +18,30 @@ public class StringProcessor {
     }
 
     public String compress(String input) {
-        if ("aaabbccccd".equals(input)) {
-            return "a3b2c4d1";  // hårdkodad minimal lösning för att gå testet
+        if (input == null || input.isEmpty()) {
+            return "";
         }
-        return "";
+
+        StringBuilder result = new StringBuilder();
+        int count = 1;
+
+        for (int i = 0; i < input.length(); i++) {
+            if (i + 1 < input.length() && input.charAt(i) == input.charAt(i + 1)) {
+                count++;
+            } else {
+                result.append(input.charAt(i)).append(count);
+                count = 1;
+            }
+        }
+
+        String compressed = result.toString();
+
+        // Om komprimerad version inte är kortare → returnera original
+        if (compressed.length() >= input.length()) {
+            return input;
+        }
+
+        return compressed;
     }
+
 }

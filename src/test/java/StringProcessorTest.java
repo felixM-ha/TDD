@@ -117,7 +117,6 @@ class StringProcessorTest {
             assertEquals("abc", result);
         }
 
-
     }
 
 }
