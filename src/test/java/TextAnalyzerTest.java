@@ -3,6 +3,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -60,5 +62,18 @@ class TextAnalyzerTest {
             assertEquals(0.0, result.getSentimentScore());
         }
 
+        @ParameterizedTest
+        @CsvSource({
+                "I love TDD! It makes coding fun and easy., POSITIVE",
+                "I hate this hard and difficult task, NEGATIVE",
+                "This task is neither easy nor difficult, NEUTRAL",
+                "Coding challenges are great, POSITIVE",
+                "Bugs and errors are horrible, NEGATIVE"
+        })
+        @DisplayName("Should classify sentiment categories correctly")
+        void shouldClassifySentimentCategoriesCorrectly(String text, SentimentCategory expectedCategory) {
+            SentimentResult result = analyzer.analyzeSentiment(text);
+            assertEquals(expectedCategory, result.getSentimentCategory());
+        }
     }
 }
