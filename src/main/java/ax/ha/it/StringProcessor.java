@@ -75,5 +75,9 @@ public class StringProcessor {
         return result.toString();
     }
 
+    public boolean containsSubstring(String text, String substring) {
+        if (text == null || substring == null) return false;
+        return text.contains(substring);
+    }
 
 }
