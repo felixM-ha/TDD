@@ -386,6 +386,14 @@ class StringProcessorTest {
             assertTrue(result);
         }
 
+        @Test
+        @DisplayName("Should handle word count with various whitespace")
+        void shouldHandleWordCountWithVariousWhitespace() {
+            String input = "  Hello   world \t from\nTDD  ";
+            int count = processor.countWords(input);
+            assertEquals(4, count);
+        }
+
     }
 
 }
