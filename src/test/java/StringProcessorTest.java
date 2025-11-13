@@ -109,6 +109,14 @@ class StringProcessorTest {
             String result = processor.compress("aaabbccccd");
             assertEquals("a3b2c4d1", result);
         }
+
+        @Test
+        @DisplayName("should return original if compression doesn't reduce length")
+        void shouldReturnOriginalIfCompressionDoesNotReduceLength() {
+            String result = processor.compress("abc");
+            assertEquals("abc", result);
+        }
+
     }
 
 }
