@@ -85,4 +85,16 @@ public class StringProcessor {
         return text.toLowerCase().contains(sub.toLowerCase());
     }
 
+    public String removeDuplicateCharacters(String input) {
+        if (input == null || input.isEmpty()) return "";
+
+        StringBuilder result = new StringBuilder();
+        for (char c : input.toCharArray()) {
+            if (result.indexOf(String.valueOf(c)) == -1) {
+                result.append(c);
+            }
+        }
+        return result.toString();
+    }
+
 }
