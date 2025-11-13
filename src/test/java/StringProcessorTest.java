@@ -176,6 +176,15 @@ class StringProcessorTest {
             boolean result = processor.isValidEmail("test@email.com");
             assertTrue(result);
         }
+
+        @Test
+        @DisplayName("should reject invalid email formats")
+        void shouldRejectInvalidEmailFormats() {
+            assertFalse(processor.isValidEmail("plainaddress"));
+            assertFalse(processor.isValidEmail("missing@domain"));
+            assertFalse(processor.isValidEmail("@missingusername.com"));
+        }
+
     }
 
 
