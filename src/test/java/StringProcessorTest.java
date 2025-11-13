@@ -310,6 +310,13 @@ class StringProcessorTest {
             assertFalse(processor.isValidUSPhoneNumber(""));
         }
 
+        @Test
+        @DisplayName("should validate URL format")
+        void shouldValidateURLFormat() {
+            boolean result = processor.isValidURL("https://www.example.com");
+            assertTrue(result);
+        }
+
     }
 
 }

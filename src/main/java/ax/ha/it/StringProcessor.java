@@ -99,7 +99,7 @@ public class StringProcessor {
 
     public boolean isValidUSPhoneNumber(String input) {
         if (input == null || input.isEmpty()) return false;
-        // Enkel regex för formatet (123) 456-7890
+
         return input.matches("^\\(\\d{3}\\) \\d{3}-\\d{4}$");
     }
 
