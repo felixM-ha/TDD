@@ -1,7 +1,4 @@
-import ax.ha.it.Calculator;
-import ax.ha.it.SentimentCategory;
-import ax.ha.it.SentimentResult;
-import ax.ha.it.StringProcessor;
+import ax.ha.it.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -34,7 +31,6 @@ class TextAnalyzerTest {
             String text = "I love TDD! It makes coding fun and easy.";
             SentimentResult result = analyzer.analyzeSentiment(text);
 
-            // Förväntningar på analysen
             assertEquals(SentimentCategory.POSITIVE, result.getSentimentCategory());
             assertTrue(result.getSentimentScore() > 0);
             assertTrue(result.getPositiveWordCount() > 0);
