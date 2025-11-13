@@ -326,7 +326,28 @@ class StringProcessorTest {
             assertFalse(processor.isValidURL(""));                   // tom sträng
             assertFalse(processor.isValidURL(null));                 // null
         }
+    }
 
+    @Nested
+    @DisplayName("Performance and Edge Case Tests")
+    class PerformanceAndEdgeCaseTests {
+
+        @Test
+        @DisplayName("Should handle very long strings in reversal")
+        void shouldHandleVeryLongStringsInReversal() {
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 100_000; i++) {
+                sb.append("a");
+            }
+            String longString = sb.toString();
+
+            String reversed = processor.reverse(longString);
+
+            assertEquals(longString.length(), reversed.length());
+
+            assertTrue(reversed.chars().allMatch(c -> c == 'a'));
+        }
     }
 
 }
