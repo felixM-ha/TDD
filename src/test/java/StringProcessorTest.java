@@ -371,6 +371,21 @@ class StringProcessorTest {
             assertEquals(expected, result);
         }
 
+        @Test
+        @DisplayName("Should handle very long palindrome check")
+        void shouldHandleVeryLongPalindromeCheck() {
+            // Skapa en lång palindrom-sträng
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 50_000; i++) {
+                sb.append("abc");
+            }
+            String longPalindrome = sb.toString() + sb.reverse().toString();
+
+            boolean result = processor.isPalindrome(longPalindrome);
+
+            assertTrue(result);
+        }
+
     }
 
 }
