@@ -262,4 +262,11 @@ class StringProcessorTest {
         assertEquals("abc", result);
     }
 
+    @Test
+    @DisplayName("should preserve order when removing duplicates")
+    void shouldPreserveOrderWhenRemovingDuplicates() {
+        String result = processor.removeDuplicateCharacters("banana");
+        assertEquals("ban", result);
+    }
+
 }
