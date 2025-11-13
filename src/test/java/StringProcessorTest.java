@@ -214,78 +214,91 @@ class StringProcessorTest {
             String result = processor.capitalizeWords("hello world from tdd");
             assertEquals("Hello World From Tdd", result);
         }
+
+        @Test
+        @DisplayName("should handle single word capitalization")
+        void shouldHandleSingleWordCapitalization() {
+            String result = processor.capitalizeWords("hello");
+            assertEquals("Hello", result);
+        }
+
+        @Test
+        @DisplayName("should handle mixed case input in capitalization")
+        void shouldHandleMixedCaseInputInCapitalization() {
+            String result = processor.capitalizeWords("hElLo wORld fRoM tDd");
+            assertEquals("Hello World From Tdd", result);
+        }
+
+        @ParameterizedTest
+        @NullAndEmptySource
+        @DisplayName("should handle null and empty strings in capitalization")
+        void shouldHandleNullAndEmptyStringsInCapitalization(String input) {
+            String result = processor.capitalizeWords(input);
+            assertEquals("", result);
+        }
+
+        @Test
+        @DisplayName("should check if string contains substring")
+        void shouldCheckIfStringContainsSubstring() {
+            boolean result = processor.containsSubstring("Hello World", "World");
+            assertTrue(result);
+        }
+
+        @Test
+        @DisplayName("should check case-insensitive substring")
+        void shouldCheckCaseInsensitiveSubstring() {
+            boolean result = processor.containsSubstringIgnoreCase("Hello World", "world");
+            assertTrue(result);
+        }
+
+        @Test
+        @DisplayName("should return false for non-existent substring")
+        void shouldReturnFalseForNonExistentSubstring() {
+            boolean result = processor.containsSubstring("Hello World", "Java");
+            assertFalse(result);
+        }
+
+        @Test
+        @DisplayName("should remove duplicate characters")
+        void shouldRemoveDuplicateCharacters() {
+            String result = processor.removeDuplicateCharacters("aabbcc");
+            assertEquals("abc", result);
+        }
+
+        @Test
+        @DisplayName("should handle string with no duplicates")
+        void shouldHandleStringWithNoDuplicates() {
+            String result = processor.removeDuplicateCharacters("abc");
+            assertEquals("abc", result);
+        }
+
+        @Test
+        @DisplayName("should preserve order when removing duplicates")
+        void shouldPreserveOrderWhenRemovingDuplicates() {
+            String result = processor.removeDuplicateCharacters("banana");
+            assertEquals("ban", result);
+        }
+
+        @ParameterizedTest
+        @NullAndEmptySource
+        @DisplayName("should handle null and empty strings in duplicate removal")
+        void shouldHandleNullAndEmptyStringsInDuplicateRemoval(String input) {
+            String result = processor.removeDuplicateCharacters(input);
+            assertEquals("", result);
+        }
     }
 
-    @Test
-    @DisplayName("should handle single word capitalization")
-    void shouldHandleSingleWordCapitalization() {
-        String result = processor.capitalizeWords("hello");
-        assertEquals("Hello", result);
-    }
+    @Nested
+    @DisplayName("Advanced Validation Tests")
+    class AdvancedValidationTests {
 
-    @Test
-    @DisplayName("should handle mixed case input in capitalization")
-    void shouldHandleMixedCaseInputInCapitalization() {
-        String result = processor.capitalizeWords("hElLo wORld fRoM tDd");
-        assertEquals("Hello World From Tdd", result);
-    }
+        @Test
+        @DisplayName("should validate US phone number format")
+        void shouldValidateUSPhoneNumberFormat() {
+            boolean result = processor.isValidUSPhoneNumber("(123) 456-7890");
+            assertTrue(result);
+        }
 
-    @ParameterizedTest
-    @NullAndEmptySource
-    @DisplayName("should handle null and empty strings in capitalization")
-    void shouldHandleNullAndEmptyStringsInCapitalization(String input) {
-        String result = processor.capitalizeWords(input);
-        assertEquals("", result);
-    }
-
-    @Test
-    @DisplayName("should check if string contains substring")
-    void shouldCheckIfStringContainsSubstring() {
-        boolean result = processor.containsSubstring("Hello World", "World");
-        assertTrue(result);
-    }
-
-    @Test
-    @DisplayName("should check case-insensitive substring")
-    void shouldCheckCaseInsensitiveSubstring() {
-        boolean result = processor.containsSubstringIgnoreCase("Hello World", "world");
-        assertTrue(result);
-    }
-
-    @Test
-    @DisplayName("should return false for non-existent substring")
-    void shouldReturnFalseForNonExistentSubstring() {
-        boolean result = processor.containsSubstring("Hello World", "Java");
-        assertFalse(result);
-    }
-
-    @Test
-    @DisplayName("should remove duplicate characters")
-    void shouldRemoveDuplicateCharacters() {
-        String result = processor.removeDuplicateCharacters("aabbcc");
-        assertEquals("abc", result);
-    }
-
-    @Test
-    @DisplayName("should handle string with no duplicates")
-    void shouldHandleStringWithNoDuplicates() {
-        String result = processor.removeDuplicateCharacters("abc");
-        assertEquals("abc", result);
-    }
-
-    @Test
-    @DisplayName("should preserve order when removing duplicates")
-    void shouldPreserveOrderWhenRemovingDuplicates() {
-        String result = processor.removeDuplicateCharacters("banana");
-        assertEquals("ban", result);
-    }
-
-    @ParameterizedTest
-    @NullAndEmptySource
-    @DisplayName("should handle null and empty strings in duplicate removal")
-    void shouldHandleNullAndEmptyStringsInDuplicateRemoval(String input) {
-        String result = processor.removeDuplicateCharacters(input);
-        assertEquals("", result);
     }
 
 }
