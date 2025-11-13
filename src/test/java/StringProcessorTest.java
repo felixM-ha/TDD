@@ -185,6 +185,14 @@ class StringProcessorTest {
             assertFalse(processor.isValidEmail("@missingusername.com"));
         }
 
+        @ParameterizedTest
+        @NullAndEmptySource
+        @DisplayName("should reject null and empty emails")
+        void shouldRejectNullAndEmptyEmails(String input) {
+            assertFalse(processor.isValidEmail(input));
+        }
+
+
     }
 
 
