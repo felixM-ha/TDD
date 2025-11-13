@@ -317,6 +317,16 @@ class StringProcessorTest {
             assertTrue(result);
         }
 
+        @Test
+        @DisplayName("should reject invalid URL formats")
+        void shouldRejectInvalidURLFormats() {
+            assertFalse(processor.isValidURL("htp://example.com"));  // fel protokoll
+            assertFalse(processor.isValidURL("www.example.com"));    // saknar http/https
+            assertFalse(processor.isValidURL("example"));            // saknar domän
+            assertFalse(processor.isValidURL(""));                   // tom sträng
+            assertFalse(processor.isValidURL(null));                 // null
+        }
+
     }
 
 }
