@@ -35,5 +35,17 @@ class TextAnalyzerTest {
             assertTrue(result.getSentimentScore() > 0);
             assertTrue(result.getPositiveWordCount() > 0);
         }
+
+        @Test
+        @DisplayName("Should analyze negative sentiment correctly")
+        void shouldAnalyzeNegativeSentimentCorrectly() {
+            String text = "I hate this hard and difficult task";
+            SentimentResult result = analyzer.analyzeSentiment(text);
+
+            assertEquals(SentimentCategory.NEGATIVE, result.getSentimentCategory());
+            assertTrue(result.getSentimentScore() < 0);
+            assertEquals(0, result.getPositiveWordCount());
+            assertEquals(3, result.getNegativeWordCount());
+        }
     }
 }
