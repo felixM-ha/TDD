@@ -117,6 +117,13 @@ class StringProcessorTest {
             assertEquals("abc", result);
         }
 
+        @Test
+        @DisplayName("should handle single character")
+        void shouldHandleSingleCharacter() {
+            String result = processor.compress("A");
+            assertEquals("A", result);
+        }
+
     }
 
 }
