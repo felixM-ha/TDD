@@ -336,9 +336,7 @@ class StringProcessorTest {
         @DisplayName("Should handle very long strings in reversal")
         void shouldHandleVeryLongStringsInReversal() {
 
-            StringBuilder sb = new StringBuilder();
-            sb.append("a".repeat(100_000));
-            String longString = sb.toString();
+            String longString = "a".repeat(100_000);
 
             String reversed = processor.reverse(longString);
 
