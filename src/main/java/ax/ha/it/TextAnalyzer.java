@@ -6,8 +6,12 @@ public class TextAnalyzer {
 
     private static final Set<String> POSITIVE_WORDS = Set.of("good", "happy", "great", "excellent", "fantastic", "love", "fun", "easy");
     private static final Set<String> NEGATIVE_WORDS = Set.of("bad", "sad", "terrible", "horrible", "awful", "hate", "hard", "difficult");
+    private final Calculator calculator;
+    private final StringProcessor processor;
 
     public TextAnalyzer(Calculator calculator, StringProcessor processor) {
+        this.calculator = calculator;
+        this.processor = processor;
     }
 
     public SentimentResult analyzeSentiment(String text) {
