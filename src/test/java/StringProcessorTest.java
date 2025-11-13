@@ -158,6 +158,13 @@ class StringProcessorTest {
             assertEquals(4, count);
         }
 
+        @Test
+        @DisplayName("should count single word")
+        void shouldCountSingleWord() {
+            int count = processor.countWords("Hello");
+            assertEquals(1, count);
+        }
+
     }
 
 
