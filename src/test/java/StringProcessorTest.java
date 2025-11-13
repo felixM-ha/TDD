@@ -124,6 +124,15 @@ class StringProcessorTest {
             assertEquals("A", result);
         }
 
+        @ParameterizedTest
+        @NullAndEmptySource
+        @DisplayName("should handle null and empty strings in compression")
+        void shouldHandleNullAndEmptyStringsInCompression(String input) {
+            String result = processor.compress(input);
+            assertEquals("", result);
+        }
+
+
     }
 
 }
