@@ -80,4 +80,9 @@ public class StringProcessor {
         return text.contains(substring);
     }
 
+    public boolean containsSubstringIgnoreCase(String text, String sub) {
+        if (text == null || sub == null) return false;
+        return text.toLowerCase().contains(sub.toLowerCase());
+    }
+
 }
