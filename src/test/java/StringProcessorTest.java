@@ -164,7 +164,18 @@ class StringProcessorTest {
             int count = processor.countWords("Hello");
             assertEquals(1, count);
         }
+    }
 
+    @Nested
+    @DisplayName("Input Validation Tests")
+    class InputValidationTests {
+
+        @Test
+        @DisplayName("should validate email format")
+        void shouldValidateEmailFormat() {
+            boolean result = processor.isValidEmail("test@example.com");
+            assertTrue(result);
+        }
     }
 
 
