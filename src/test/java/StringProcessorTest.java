@@ -348,6 +348,18 @@ class StringProcessorTest {
 
             assertTrue(reversed.chars().allMatch(c -> c == 'a'));
         }
+
+        @Test
+        @DisplayName("Should handle strings with special characters")
+        void shouldHandleStringsWithSpecialCharacters() {
+            String input = "Hello, World! @2025 #TDD";
+            String expected = "DDT# 5202@ !dlroW ,olleH";
+
+            String result = processor.reverse(input);
+
+            assertEquals(expected, result);
+        }
+
     }
 
 }
