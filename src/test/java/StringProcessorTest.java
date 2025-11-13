@@ -248,4 +248,11 @@ class StringProcessorTest {
         assertFalse(result);
     }
 
+    @Test
+    @DisplayName("should remove duplicate characters")
+    void shouldRemoveDuplicateCharacters() {
+        String result = processor.removeDuplicateCharacters("aabbcc");
+        assertEquals("abc", result);
+    }
+
 }
