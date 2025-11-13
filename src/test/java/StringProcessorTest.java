@@ -360,6 +360,17 @@ class StringProcessorTest {
             assertEquals(expected, result);
         }
 
+        @Test
+        @DisplayName("Should handle unicode characters")
+        void shouldHandleUnicodeCharacters() {
+            String input = "こんにちは世界🌏";
+            String expected = "🌏界世はちにんこ";
+
+            String result = processor.reverse(input);
+
+            assertEquals(expected, result);
+        }
+
     }
 
 }
