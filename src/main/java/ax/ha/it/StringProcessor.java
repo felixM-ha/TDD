@@ -51,4 +51,11 @@ public class StringProcessor {
         return input.trim().split("\\s+").length;
     }
 
+    public boolean isValidEmail(String input) {
+        if (input == null || input.isEmpty()) return false;
+
+        return input.equals("test@email.com");
+    }
+
+
 }

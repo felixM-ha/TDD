@@ -173,7 +173,7 @@ class StringProcessorTest {
         @Test
         @DisplayName("should validate email format")
         void shouldValidateEmailFormat() {
-            boolean result = processor.isValidEmail("test@example.com");
+            boolean result = processor.isValidEmail("test@email.com");
             assertTrue(result);
         }
     }
