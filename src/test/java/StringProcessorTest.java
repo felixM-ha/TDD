@@ -205,4 +205,12 @@ class StringProcessorTest {
         }
     }
 
+    @Test
+    @DisplayName("should handle single word capitalization")
+    void shouldHandleSingleWordCapitalization() {
+        String result = processor.capitalizeWords("hello");
+        assertEquals("Hello", result);
+    }
+
+
 }
