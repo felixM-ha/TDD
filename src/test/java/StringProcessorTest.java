@@ -269,4 +269,12 @@ class StringProcessorTest {
         assertEquals("ban", result);
     }
 
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("should handle null and empty strings in duplicate removal")
+    void shouldHandleNullAndEmptyStringsInDuplicateRemoval(String input) {
+        String result = processor.removeDuplicateCharacters(input);
+        assertEquals("", result);
+    }
+
 }
