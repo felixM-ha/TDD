@@ -219,5 +219,13 @@ class StringProcessorTest {
         assertEquals("Hello World From Tdd", result);
     }
 
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("should handle null and empty strings in capitalization")
+    void shouldHandleNullAndEmptyStringsInCapitalization(String input) {
+        String result = processor.capitalizeWords(input);
+        assertEquals("", result);
+    }
+
 
 }
