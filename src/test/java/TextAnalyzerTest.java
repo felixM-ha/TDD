@@ -164,4 +164,39 @@ class TextAnalyzerTest {
             assertEquals(firstResult.getSyllableCount(), secondResult.getSyllableCount());
         }
     }
+
+    @Nested
+    @DisplayName("Statistical Analysis Tests")
+    class StatisticalAnalysisTests {
+
+        @Test
+        @DisplayName("Should generate comprehensive text statistics")
+        void shouldGenerateComprehensiveTextStatistics() {
+            String text = "This is a simple sentence. Here is another one! " +
+                    "Complex sentences, however, might take longer to read.";
+
+            // Kör läsbarhetsanalysen
+            ReadabilityResult result = analyzer.analyzeReadability(text);
+
+            // Verifiera att alla metrics är beräknade
+            assertNotNull(result);
+            assertTrue(result.getSentenceCount() > 0, "Sentence count should be positive");
+            assertTrue(result.getWordCount() > 0, "Word count should be positive");
+            assertTrue(result.getSyllableCount() > 0, "Syllable count should be positive");
+            assertTrue(result.getAvgWordsPerSentence() > 0, "Average words per sentence should be positive");
+            assertTrue(result.getAvgSyllablesPerWord() > 0, "Average syllables per word should be positive");
+            assertTrue(result.getFleschScore() >= 0, "Flesch score should be non-negative");
+            assertNotNull(result.getReadingLevel(), "Reading level should not be null");
+
+            // Extra: Du kan skriva ut för visuell kontroll (valfritt)
+            System.out.println("Sentences: " + result.getSentenceCount());
+            System.out.println("Words: " + result.getWordCount());
+            System.out.println("Syllables: " + result.getSyllableCount());
+            System.out.println("Avg words/sentence: " + result.getAvgWordsPerSentence());
+            System.out.println("Avg syllables/word: " + result.getAvgSyllablesPerWord());
+            System.out.println("Flesch score: " + result.getFleschScore());
+            System.out.println("Reading level: " + result.getReadingLevel());
+        }
+    }
+
 }
