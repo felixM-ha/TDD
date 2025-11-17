@@ -132,6 +132,16 @@ class TextAnalyzerTest {
             assertEquals(ReadingLevel.VERY_EASY, result.getReadingLevel());
             assertTrue(result.getFleschScore() > 90);
         }
-        
+
+        @Test
+        @DisplayName("Should handle complex sentences correctly")
+        void shouldHandleComplexSentencesCorrectly() {
+            String text = "The implementation of multifaceted algorithms requires substantial cognitive effort and meticulous attention to syntactic detail.";
+            ReadabilityResult result = analyzer.analyzeReadability(text);
+
+            // Vi förväntar oss VERY_DIFFICULT för komplex akademisk text
+            assertEquals(ReadingLevel.VERY_DIFFICULT, result.getReadingLevel());
+            assertTrue(result.getFleschScore() < 30);
+        }
     }
 }
