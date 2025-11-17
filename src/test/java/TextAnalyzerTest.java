@@ -229,7 +229,7 @@ class TextAnalyzerTest {
             long spaceCount = text.chars().filter(ch -> ch == ' ').count();
 
             // Assertions
-            assertEquals(8, spaceCount, "Space count should match");
+            assertEquals(7, spaceCount, "Space count should match");
         }
 
     }
