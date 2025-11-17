@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -142,6 +143,25 @@ class TextAnalyzerTest {
             // Vi förväntar oss VERY_DIFFICULT för komplex akademisk text
             assertEquals(ReadingLevel.VERY_DIFFICULT, result.getReadingLevel());
             assertTrue(result.getFleschScore() < 30);
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {
+                "Simple text for testing readability.",
+                "Another example sentence to check consistency.",
+                "Yet another sentence to ensure the metrics are stable."
+        })
+        @DisplayName("Should provide consistent readability metrics")
+        void shouldProvideConsistentReadabilityMetrics(String text) {
+            ReadabilityResult firstResult = analyzer.analyzeReadability(text);
+            ReadabilityResult secondResult = analyzer.analyzeReadability(text);
+
+            // Kontrollera att resultaten är identiska för samma input
+            assertEquals(firstResult.getFleschScore(), secondResult.getFleschScore(), 0.001);
+            assertEquals(firstResult.getReadingLevel(), secondResult.getReadingLevel());
+            assertEquals(firstResult.getWordCount(), secondResult.getWordCount());
+            assertEquals(firstResult.getSentenceCount(), secondResult.getSentenceCount());
+            assertEquals(firstResult.getSyllableCount(), secondResult.getSyllableCount());
         }
     }
 }
