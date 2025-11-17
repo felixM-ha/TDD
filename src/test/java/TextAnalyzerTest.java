@@ -102,7 +102,7 @@ class TextAnalyzerTest {
         @DisplayName("Should calculate Flesch Reading Ease correctly")
         void ShouldCalculateFleschReadingEaseCorrectly() {
 
-            String text = "This is a simple sentence. This is another sentence.";
+            String text = "This is a simple sentence. This is another simple one.";
 
             ReadabilityResult result = analyzer.analyzeReadability(text);
 
@@ -120,6 +120,17 @@ class TextAnalyzerTest {
 
             // Lättläst → STANDARD eller bättre
             assertNotNull(result.getReadingLevel());
+        }
+
+        @Test
+        @DisplayName("Should classify reading levels correctly")
+        void shouldClassifyReadingLevelsCorrectly() {
+            String text = "This is a very easy sentence. Simple words are fun!";
+            ReadabilityResult result = analyzer.analyzeReadability(text);
+
+            // Vi förväntar oss VERY_EASY eftersom texten är kort och enkel
+            assertEquals(ReadingLevel.VERY_EASY, result.getReadingLevel());
+            assertTrue(result.getFleschScore() > 90);
         }
     }
 }
