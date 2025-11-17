@@ -219,6 +219,19 @@ class TextAnalyzerTest {
             assertEquals(9, wordCount, "Word count should match");
             assertEquals(8, uniqueWordCount, "Unique word count should match");
         }
+
+        @Test
+        @DisplayName("Should count spaces in text")
+        void shouldCountSpacesInText() {
+            String text = "Hello world! This is a test with spaces.";
+
+            // Räkna mellanslag
+            long spaceCount = text.chars().filter(ch -> ch == ' ').count();
+
+            // Assertions
+            assertEquals(8, spaceCount, "Space count should match");
+        }
+
     }
 
 }
