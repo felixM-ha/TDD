@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Complex TextAnalyzer")
 class TextAnalyzerTest {
@@ -92,6 +91,35 @@ class TextAnalyzerTest {
             assertEquals(0, resultNull.getPositiveWordCount());
             assertEquals(0, resultNull.getNegativeWordCount());
             assertEquals(0.0, resultNull.getSentimentScore());
+        }
+    }
+
+    @Nested
+    @DisplayName("Readability Analysis Tests")
+    class ReadabilityAnalysisTests {
+
+        @Test
+        @DisplayName("Should calculate Flesch Reading Ease correctly")
+        void ShouldCalculateFleschReadingEaseCorrectly() {
+
+            String text = "This is a simple sentence. This is another sentence.";
+
+            ReadabilityResult result = analyzer.analyzeReadability(text);
+
+            // Förväntningar:
+            // 2 meningar
+            // 10 ord
+            // ca 13 stavelser (skiljer beroende på algoritm → men testet ska vara RED nu)
+
+            assertEquals(2, result.getSentenceCount());
+            assertEquals(10, result.getWordCount());
+            assertTrue(result.getSyllableCount() > 0);
+
+            // Flesch score ska vara > 60 för denna text (relativt lättläst)
+            assertTrue(result.getFleschScore() > 60);
+
+            // Lättläst → STANDARD eller bättre
+            assertNotNull(result.getReadingLevel());
         }
     }
 }
