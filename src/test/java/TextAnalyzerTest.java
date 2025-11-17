@@ -249,7 +249,7 @@ class TextAnalyzerTest {
 
             // Assertions
             assertEquals(12, wordCount, "Word count should match");
-            assertEquals(13, uniqueWords, "Unique word count should match");
+            assertEquals(12, uniqueWords, "Unique word count should match");
         }
 
 
