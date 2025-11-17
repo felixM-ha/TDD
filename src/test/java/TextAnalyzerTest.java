@@ -268,6 +268,21 @@ class TextAnalyzerTest {
             assertEquals(0.625, jaccardSimilarity, 0.0001);
         }
 
+        @Test
+        @DisplayName("Should detect potential plagiarism")
+        void shouldDetectPotentialPlagiarism() {
+            String text1 = "TDD makes development predictable and reliable";
+            String text2 = "TDD ensures development is predictable and reliable";
+
+            double similarity = analyzer.calculateJaccardSimilarity(text1, text2);
+
+            // Sätt en tröskel för plagiat (t.ex. 0.6)
+            boolean potentialPlagiarism = similarity > 0.6;
+
+            assertTrue(potentialPlagiarism, "Texts should be flagged as potential plagiarism");
+        }
+
+
     }
 
 
