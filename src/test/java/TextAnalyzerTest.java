@@ -263,22 +263,11 @@ class TextAnalyzerTest {
             String text1 = "TDD makes development predictable and reliable";
             String text2 = "TDD ensures development is predictable and reliable";
 
-            // Dela upp i ord
-            Set<String> words1 = new java.util.HashSet<>(java.util.Arrays.asList(text1.toLowerCase().split("\\s+")));
-            Set<String> words2 = new java.util.HashSet<>(java.util.Arrays.asList(text2.toLowerCase().split("\\s+")));
+            double jaccardSimilarity = analyzer.calculateJaccardSimilarity(text1, text2);
 
-            // Beräkna Jaccard-likhet
-            Set<String> intersection = new java.util.HashSet<>(words1);
-            intersection.retainAll(words2);
-
-            Set<String> union = new java.util.HashSet<>(words1);
-            union.addAll(words2);
-
-            double jaccardSimilarity = (double) intersection.size() / union.size();
-
-            // Kontrollera att likheten är korrekt (förväntat ca 0.71)
-            assertEquals(0.7142857142857143, jaccardSimilarity, 0.0001);
+            assertEquals(0.625, jaccardSimilarity, 0.0001);
         }
+
     }
 
 

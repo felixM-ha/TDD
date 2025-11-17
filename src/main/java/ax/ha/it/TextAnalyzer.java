@@ -1,6 +1,6 @@
 package ax.ha.it;
 
-import java.util.Set;
+import java.util.*;
 
 public class TextAnalyzer {
 
@@ -12,7 +12,7 @@ public class TextAnalyzer {
     );
 
     public TextAnalyzer(Calculator calculator, StringProcessor processor) {
-        // Konstruktor, dependencies lagras om du behöver dem senare
+        // Konstruktor: dependencies lagras om de behövs senare
     }
 
     // ------------------- SENTIMENT ANALYSIS -------------------
@@ -73,13 +73,13 @@ public class TextAnalyzer {
         );
     }
 
-    // ------------------- HJÄLPMETODER -------------------
-    private int countSentences(String text) {
+    // ------------------- TEXT STATISTICS -------------------
+    public int countSentences(String text) {
         if (text == null || text.isEmpty()) return 1;
         return text.split("[.!?]+").length;
     }
 
-    private int countSyllables(String[] words) {
+    public int countSyllables(String[] words) {
         int count = 0;
         for (String word : words) {
             count += countSyllablesInWord(word);
@@ -87,7 +87,7 @@ public class TextAnalyzer {
         return count;
     }
 
-    private int countSyllablesInWord(String word) {
+    public int countSyllablesInWord(String word) {
         if (word == null || word.isEmpty()) return 1;
         word = word.toLowerCase().replaceAll("[^a-z]", "");
         int count = 0;
@@ -113,4 +113,27 @@ public class TextAnalyzer {
         if (score >= 30) return ReadingLevel.DIFFICULT;
         return ReadingLevel.VERY_DIFFICULT;
     }
+
+    // ------------------- TEXT COMPARISON / JACCARD -------------------
+    public double calculateJaccardSimilarity(String text1, String text2) {
+        List<String> list1 = Arrays.asList(text1.toLowerCase().split("\\s+"));
+        List<String> list2 = Arrays.asList(text2.toLowerCase().split("\\s+"));
+
+        Set<String> allWords = new HashSet<>();
+        allWords.addAll(list1);
+        allWords.addAll(list2);
+
+        int intersectionCount = 0;
+        int unionCount = 0;
+
+        for (String word : allWords) {
+            int count1 = Collections.frequency(list1, word);
+            int count2 = Collections.frequency(list2, word);
+            intersectionCount += Math.min(count1, count2);  // min = intersection
+            unionCount += Math.max(count1, count2);        // max = union
+        }
+
+        return (double) intersectionCount / unionCount;
+    }
+
 }
