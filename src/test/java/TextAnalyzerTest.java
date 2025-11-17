@@ -132,5 +132,6 @@ class TextAnalyzerTest {
             assertEquals(ReadingLevel.VERY_EASY, result.getReadingLevel());
             assertTrue(result.getFleschScore() > 90);
         }
+        
     }
 }
