@@ -7,6 +7,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Complex TextAnalyzer")
@@ -196,6 +200,24 @@ class TextAnalyzerTest {
             System.out.println("Avg syllables/word: " + result.getAvgSyllablesPerWord());
             System.out.println("Flesch score: " + result.getFleschScore());
             System.out.println("Reading level: " + result.getReadingLevel());
+        }
+
+        @Test
+        @DisplayName("Should calculate basic text statistics")
+        void shouldCalculateBasicTextStatistics() {
+            String text = "Hello world! Hello TDD. This is a simple test.";
+
+            // Räkna ord
+            String[] words = text.toLowerCase().replaceAll("[^a-z\\s]", "").split("\\s+");
+            int wordCount = words.length;
+
+            // Räkna unika ord
+            Set<String> uniqueWords = new HashSet<>(Arrays.asList(words));
+            int uniqueWordCount = uniqueWords.size();
+
+            // Assertions
+            assertEquals(9, wordCount, "Word count should match");
+            assertEquals(8, uniqueWordCount, "Unique word count should match");
         }
     }
 
