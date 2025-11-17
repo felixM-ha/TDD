@@ -282,7 +282,6 @@ class TextAnalyzerTest {
             assertTrue(potentialPlagiarism, "Texts should be flagged as potential plagiarism");
         }
 
-
     }
 
 
