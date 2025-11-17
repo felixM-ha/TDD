@@ -232,6 +232,27 @@ class TextAnalyzerTest {
             assertEquals(7, spaceCount, "Space count should match");
         }
 
+        @Test
+        @DisplayName("Should handle complex vocabulary text")
+        void shouldHandleComplexVocabularyText() {
+            String text = "Antidisestablishmentarianism is often cited as one of the longest words in English.";
+
+            // Räkna antal ord
+            String[] words = text.split("\\s+");
+            int wordCount = words.length;
+
+            // Räkna unika ord
+            long uniqueWords = java.util.Arrays.stream(words)
+                    .map(String::toLowerCase)
+                    .distinct()
+                    .count();
+
+            // Assertions
+            assertEquals(12, wordCount, "Word count should match");
+            assertEquals(13, uniqueWords, "Unique word count should match");
+        }
+
+
     }
 
 }
