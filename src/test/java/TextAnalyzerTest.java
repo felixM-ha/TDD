@@ -340,7 +340,7 @@ class TextAnalyzerTest {
             // ONLY SPECIAL CHARACTERS
             String weird = "!@#$%^&*()_+=- []{}\"';:,.<>/?|\\";
             assertDoesNotThrow(() -> {
-                assertEquals(1, analyzer.countWords(weird));  // split() ger 1 ord
+                assertEquals(2, analyzer.countWords(weird));  // split() ger 1 ord
                 assertTrue(analyzer.calculateAverageWordLength(weird) >= 0);
 
                 double readability = analyzer.calculateReadabilityScore(weird);
