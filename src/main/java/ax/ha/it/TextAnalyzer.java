@@ -5,7 +5,6 @@ import java.util.*;
 public class TextAnalyzer {
 
     private final StringProcessor processor;
-
     private static final Set<String> POSITIVE_WORDS = Set.of(
             "good", "happy", "great", "excellent", "fantastic", "love", "fun", "easy"
     );
