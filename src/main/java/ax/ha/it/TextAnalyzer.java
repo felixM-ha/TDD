@@ -11,8 +11,10 @@ public class TextAnalyzer {
             "bad", "sad", "terrible", "horrible", "awful", "hate", "hard", "difficult"
     );
 
+    public TextAnalyzer() {
+    }
+
     public TextAnalyzer(Calculator calculator, StringProcessor processor) {
-        // Konstruktor: dependencies lagras om de behövs senare
     }
 
     // ------------------- SENTIMENT ANALYSIS -------------------

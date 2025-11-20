@@ -350,6 +350,30 @@ class TextAnalyzerTest {
                 assertEquals(SentimentCategory.NEUTRAL, sentiment.getSentimentCategory());
             });
         }
+    }
+
+    @Nested
+    @DisplayName("Integration with Calculator and StringProcessor Tests")
+    class IntegrationWithCalculatorAndStringProcessorTests {
+
+        @Test
+        @DisplayName("Should integrate with Calculator for statistical calculations")
+        void shouldIntegrateWithCalculatorForStatisticalCalculations() {
+
+            Calculator calculator = new Calculator();
+            TextAnalyzer analyzer = new TextAnalyzer();
+
+            String text = "This is a simple test";
+
+            int wordCount = analyzer.countWords(text);
+            double avgLength = analyzer.calculateAverageWordLength(text);
+
+            // Calculator used to compute combined metric
+            double result = calculator.divide(wordCount, avgLength);
+
+            assertEquals(wordCount / avgLength, result);
+        }
+
 
     }
 
