@@ -361,7 +361,8 @@ class TextAnalyzerTest {
         void shouldIntegrateWithCalculatorForStatisticalCalculations() {
 
             Calculator calculator = new Calculator();
-            TextAnalyzer analyzer = new TextAnalyzer();
+            StringProcessor processor = new StringProcessor();
+            TextAnalyzer analyzer = new TextAnalyzer(calculator, processor);
 
             String text = "This is a simple test";
 
@@ -374,6 +375,25 @@ class TextAnalyzerTest {
             assertEquals(wordCount / avgLength, result);
         }
 
+        @Test
+        @DisplayName("Should integrate with StringProcessor for text manipulation")
+        void shouldIntegrateWithStringProcessorForTextManipulation() {
+
+            Calculator calculator = new Calculator();
+            StringProcessor processor = new StringProcessor();
+            TextAnalyzer analyzer = new TextAnalyzer(calculator, processor);
+
+            String input = "  Hello   World  ";
+
+            // Trim + normalize spaces
+            String processed = processor.normalizeWhitespace(processor.trim(input));
+
+            // Analyzer should now correctly count words
+            int count = analyzer.countWords(processed);
+
+            assertEquals(2, count);
+            assertEquals("Hello World", processed);
+        }
 
     }
 

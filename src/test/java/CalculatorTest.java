@@ -101,25 +101,4 @@ public class CalculatorTest {
         double result = calc.squareRoot(-2);
         assertEquals(-1, result);
     }
-
-    //TODO
-    // Should handle maximum integer values in addition
-    // Should handle negative exponents
-    // Should handle zero base with positive exponent
-    // Should handle zero squared
-
-    /* @Test
-    void shouldHandleMaximumIntegerValuesInAddition() {
-        Calculator calc = new Calculator();
-        int result = calc.add(Integer.MAX_VALUE, 1);
-    }
-    */
-
-
-    //TODO
-    // Should
-    //
-    //
-    //
-
 }

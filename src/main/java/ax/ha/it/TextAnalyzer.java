@@ -4,6 +4,8 @@ import java.util.*;
 
 public class TextAnalyzer {
 
+    private final StringProcessor processor;
+
     private static final Set<String> POSITIVE_WORDS = Set.of(
             "good", "happy", "great", "excellent", "fantastic", "love", "fun", "easy"
     );
@@ -11,14 +13,16 @@ public class TextAnalyzer {
             "bad", "sad", "terrible", "horrible", "awful", "hate", "hard", "difficult"
     );
 
-    public TextAnalyzer() {
-    }
-
     public TextAnalyzer(Calculator calculator, StringProcessor processor) {
+        if (processor == null) throw new IllegalArgumentException("StringProcessor cannot be null");
+        this.processor = processor;
     }
 
     // ------------------- SENTIMENT ANALYSIS -------------------
     public SentimentResult analyzeSentiment(String text) {
+
+        text = processor.trim(text);
+
         if (text == null || text.isEmpty()) {
             return new SentimentResult(0.0, SentimentCategory.NEUTRAL, 0, 0);
         }

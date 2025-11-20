@@ -43,6 +43,16 @@ public class StringProcessor {
         return compressed;
     }
 
+    public String trim(String input) {
+        if (input == null) return "";
+        return input.trim();
+    }
+
+    public String normalizeWhitespace(String input) {
+        if (input == null) return "";
+        return input.trim().replaceAll("\\s+", " ");
+    }
+
     public int countWords(String input) {
         if (input == null || input.trim().isEmpty()) {
             return 0;
