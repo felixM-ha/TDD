@@ -136,4 +136,32 @@ public class TextAnalyzer {
         return (double) intersectionCount / unionCount;
     }
 
+    // ------------------- BASIC STATISTICS (used by performance test) -------------------
+
+    public int countWords(String text) {
+        if (text == null || text.isEmpty()) return 0;
+        return text.trim().split("\\s+").length;
+    }
+
+    public double calculateAverageWordLength(String text) {
+        if (text == null || text.isEmpty()) return 0.0;
+
+        String[] words = text.trim().split("\\s+");
+        int totalLength = 0;
+
+        for (String w : words) {
+            totalLength += w.length();
+        }
+
+        return (double) totalLength / words.length;
+    }
+
+    public double calculateReadabilityScore(String text) {
+        if (text == null || text.isEmpty()) return 0.0;
+
+        // återanvänd din Flesch-beräkning
+        ReadabilityResult result = analyzeReadability(text);
+        return result.getFleschScore();
+    }
+
 }
