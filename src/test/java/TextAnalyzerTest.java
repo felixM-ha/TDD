@@ -281,7 +281,37 @@ class TextAnalyzerTest {
 
             assertTrue(potentialPlagiarism, "Texts should be flagged as potential plagiarism");
         }
+    }
 
+    @Nested
+    @DisplayName("Performance and Complex Scenario Tests")
+    class PerformanceAndComplexScenarioTests {
+
+        @Test
+        @DisplayName("Should handle large text analysis efficiently")
+        void shouldHandleLargeTextAnalysisEfficiently() {
+            // Skapa 10,000 ord – t.ex. "word word word ... "
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 10000; i++) {
+                sb.append("word ");
+            }
+            String largeText = sb.toString();
+
+            long startTime = System.currentTimeMillis();
+
+            // Anropa flera av dina analysmetoder
+            analyzer.countWords(largeText);
+            analyzer.countSentences(largeText);
+            analyzer.calculateAverageWordLength(largeText);
+            analyzer.calculateReadabilityScore(largeText);
+
+            long endTime = System.currentTimeMillis();
+            long duration = endTime - startTime;
+
+            // Måste gå på under 5000 ms
+            assertTrue(duration < 5000,
+                    "Large text analysis should complete within 5 seconds, but took " + duration + " ms");
+        }
     }
 
 
