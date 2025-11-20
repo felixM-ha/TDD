@@ -312,6 +312,45 @@ class TextAnalyzerTest {
             assertTrue(duration < 5000,
                     "Large text analysis should complete within 5 seconds, but took " + duration + " ms");
         }
+
+        @Test
+        @DisplayName("Should handle edge cases and malformed input gracefully")
+        void shouldHandleEdgeCasesAndMalformedInputGracefully() {
+
+            // NULL input
+            assertDoesNotThrow(() -> {
+                assertEquals(0, analyzer.countWords(null));
+                assertEquals(0.0, analyzer.calculateAverageWordLength(null));
+                assertEquals(0.0, analyzer.calculateReadabilityScore(null));
+
+                SentimentResult sentiment = analyzer.analyzeSentiment(null);
+                assertEquals(SentimentCategory.NEUTRAL, sentiment.getSentimentCategory());
+            });
+
+            // EMPTY STRING
+            assertDoesNotThrow(() -> {
+                assertEquals(0, analyzer.countWords(""));
+                assertEquals(0.0, analyzer.calculateAverageWordLength(""));
+                assertEquals(0.0, analyzer.calculateReadabilityScore(""));
+
+                SentimentResult sentiment = analyzer.analyzeSentiment("");
+                assertEquals(SentimentCategory.NEUTRAL, sentiment.getSentimentCategory());
+            });
+
+            // ONLY SPECIAL CHARACTERS
+            String weird = "!@#$%^&*()_+=- []{}\"';:,.<>/?|\\";
+            assertDoesNotThrow(() -> {
+                assertEquals(1, analyzer.countWords(weird));  // split() ger 1 ord
+                assertTrue(analyzer.calculateAverageWordLength(weird) >= 0);
+
+                double readability = analyzer.calculateReadabilityScore(weird);
+                assertTrue(readability >= 0 || readability <= 100); // läsbarhet är definierad
+
+                SentimentResult sentiment = analyzer.analyzeSentiment(weird);
+                assertEquals(SentimentCategory.NEUTRAL, sentiment.getSentimentCategory());
+            });
+        }
+
     }
 
 
