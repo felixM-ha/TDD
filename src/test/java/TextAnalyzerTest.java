@@ -291,11 +291,7 @@ class TextAnalyzerTest {
         @DisplayName("Should handle large text analysis efficiently")
         void shouldHandleLargeTextAnalysisEfficiently() {
             // Skapa 10,000 ord – t.ex. "word word word ... "
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < 10000; i++) {
-                sb.append("word ");
-            }
-            String largeText = sb.toString();
+            String largeText = "word ".repeat(10000);
 
             long startTime = System.currentTimeMillis();
 
